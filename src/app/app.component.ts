@@ -8,15 +8,48 @@ import { Component } from '@angular/core';
 export class AppComponent {
   newMemberName = "";
   members: string[] = [];
+  errorMessage="";
+  numberOfTeams:number | ""="";
 
   onInput(member: string) {
     this.newMemberName = member;
-    console.log(this.newMemberName);
+    // console.log(this.newMemberName);
   }
 
+  onNumberOfTeamsInput(value:string){
+    this.numberOfTeams = Number(value);
+    console.log(this.numberOfTeams);
+  }
+
+
   addMember() {
+
+    if(!this.newMemberName){
+      this.errorMessage = "Name can't be empty";
+      return;
+    }
+    this.errorMessage="";
     this.members.push(this.newMemberName);
-    console.log(this.members);
+    this.newMemberName="";
+
+  }
+
+ 
+  generateTeams(){
+    console.log("Generate Team Button Clicked")
+    if(!this.numberOfTeams || this.numberOfTeams <=0){
+      return;
+    }
+
+    const allMembers = [...this.members]
+
+    for (let i = 0; i < this.numberOfTeams; i++){
+      const randomIndex = Math.floor(Math.random()*allMembers.length);
+      // timestamp 1:26:30
+    }
+
+    
+
   }
 
 }
