@@ -6,29 +6,24 @@
     </ul>
 
     <div class="add-members-container">
-      <input 
-        #addMemberInput
-        type="text" 
-        placeholder="Name" 
-        (input)="onInput(addMemberInput.value)"
-        [value]="newMemberName"
-      />
+      <input #addMemberInput type="text" placeholder="Name" (input)="onInput(addMemberInput.value)"
+        [value]="newMemberName" />
       <button (click)="addMember()">Add</button>
     </div>
 
     <div class="input-container">
-      <input 
-      #numberOfTeamsInput
-      type="number" 
-      placeholder="# of teams" 
-      (input)="onNumberOfTeamsInput(numberOfTeamsInput.value)"
-      [value]="numberOfTeams" />
+      <input #numberOfTeamsInput type="number" placeholder="# of teams"
+        (input)="onNumberOfTeamsInput(numberOfTeamsInput.value)" [value]="numberOfTeams" />
       <button (click)="generateTeams()">Generate</button>
     </div>
 
     <p *ngIf="errorMessage" class="error-msg">{{errorMessage }}</p>
-
-
-
   </div>
+
+
+  <div *ngIf="teams.length" class="teams-container">
+    <app-team *ngFor="let team of teams;let i =index"></app-team>
+    <!-- timestamp 1:53:40 -->
+  </div>
+
 </div>
