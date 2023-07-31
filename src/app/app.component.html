@@ -22,8 +22,13 @@
 
 
   <div *ngIf="teams.length" class="teams-container">
-    <app-team *ngFor="let team of teams;let i =index"></app-team>
-    <!-- timestamp 1:53:40 -->
+
+    <app-team 
+    *ngFor="let team of teams;let i=index"
+    [team]="team"
+    [index]="i"
+    ></app-team>
+
   </div>
 
 </div>
